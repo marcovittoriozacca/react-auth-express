@@ -2,6 +2,7 @@ import { handleFallbackImage, getPostImage } from '../../../utils.js';
 import { useAuth } from '../../contexts/AuthContext.jsx';
 import { MdDelete as DeleteIcon } from "react-icons/md";
 import { useGlobal } from '../../contexts/GlobalContext.jsx';
+import { Link } from 'react-router-dom';
 
 export default function({title, slug, content, image, published, tags, category}){
     const { user } = useAuth();
@@ -23,9 +24,10 @@ export default function({title, slug, content, image, published, tags, category}
                 ))}
             </div>
             <div>
-                {category?.name}
+                {category}
             </div>
             {user && <DeleteIcon onClick={() => handlePostDelete(slug)}/>}
+            {user && <Link to={`/posts/edit-post/${slug}`}>Edit this post</Link>}
         </div>
     )
 }

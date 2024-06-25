@@ -1,4 +1,4 @@
-import axios from "axios";
+import axiosClient from "../../axios/axiosClient.js";
 import { useEffect, useState } from "react"
 
 import { useNavigate } from 'react-router-dom';
@@ -24,17 +24,13 @@ export default function(){
     const [tags, setTags] = useState([]);
     
     const getCategories = async () => {
-        const categoriesUrl = import.meta.env.VITE_SERVER_CATEGORIES;
-    
-        const response = await axios.get(`${categoriesUrl}`);
+        const response = await axiosClient.get("/categories");
         const categories = response.data.categories
         setOptions(categories);
     }
 
     const getTags = async () => {
-        const tagsUrl = import.meta.env.VITE_SERVER_TAGS;
-
-        const response = await axios.get(`${tagsUrl}`);
+        const response = await axiosClient.get("/tags");
         const tags = response.data.tags;
         setTags(tags);
     }
@@ -45,11 +41,9 @@ export default function(){
     },[])
 
     const handleSubmit = async (e) => {
-        const postsUrl = import.meta.env.VITE_SERVER_POSTS;
         e.preventDefault();
-
         try{
-            const response = await axios.post(`${postsUrl}`, formData, {
+            const response = await axiosClient.post("/posts", formData, {
                 headers:{
                     "Content-Type": "multipart/form-data",
                 }

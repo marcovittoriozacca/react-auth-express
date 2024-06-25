@@ -10,6 +10,7 @@ import { AuthProvider } from "./contexts/AuthContext"
 import { GlobalProvider } from "./contexts/GlobalContext"
 import CheckAuth from "./middlewares/CheckAuth"
 import Login from "./pages/Login"
+import Edit from "./pages/Edit"
 
 function App() {
 
@@ -31,7 +32,7 @@ function App() {
                     <Create/>
                   </CheckAuth>
                 } />
-                          
+          
               {/* sub routes for posts */}
               <Route path="posts">
                 {/* main page for the posts route */}
@@ -39,6 +40,12 @@ function App() {
 
                 <Route path="tag/:id" element={<PostsByTag/>}/>
 
+                <Route path={"edit-post/:slug"} element={
+                  <CheckAuth>
+                    <Edit/>
+                  </CheckAuth>
+                } />
+                
                 {/* single post route with slug param */}
                 <Route path=":slug" element={<SinglePost/>}/>
               </Route>

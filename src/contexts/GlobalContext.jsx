@@ -18,7 +18,7 @@ const GlobalProvider = ({children}) => {
                 throw err;
             }
         }
-    } 
+    }
 
     const values = {
         handlePostDelete,
