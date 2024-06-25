@@ -7,8 +7,17 @@ export default function(){
     const navigate = useNavigate();
 
     const { slug } = useParams();
+
+    const data = {
+        title: '',
+        image: [],
+        content: '',
+        published: false,
+        categoryId: '',
+        tags: [],
+    }
     
-    const [formData, setFormData] = useState({});
+    const [formData, setFormData] = useState(data);
     const [options, setOptions] = useState([]);
     const [tags, setTags] = useState([]);
 
