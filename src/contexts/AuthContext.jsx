@@ -4,39 +4,25 @@ import useStorage from "../hooks/useStorage";
 const AuthContext = createContext();
 
 const AuthProvider = ({children}) => {
-    const [isLoggedIn, setIsLoggedIn] = useState(false);
 
-    const [user, setUser] = useStorage(false, "user");
+    const [user, setUser] = useStorage(null, "user");
 
     const handleLogin = (data) => {
-        setIsLoggedIn(true)
+
         setUser(data);
     };
-
-    const handleLoggedInStatus = () => {
-        if(user !== false){
-            setIsLoggedIn(true)
-        }else{
-            setIsLoggedIn(false)
-        }
-    }
-
     
     const handleLogout = () => {
-        setIsLoggedIn(false)
-        setUser(false);
+        // setIsLoggedIn(false)
+        setUser(null);
+        localStorage.removeItem("user");
     };
     
     const values = {
-        isLoggedIn,
         user,
         handleLogin,
         handleLogout
     }
-    
-    useEffect(()=>{
-        handleLoggedInStatus();
-    },[isLoggedIn, user])
     
     return(
         <AuthContext.Provider value={values}>

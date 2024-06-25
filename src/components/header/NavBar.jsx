@@ -18,7 +18,7 @@ const links = [
 ]
 export default function(){
     const navigate = useNavigate();
-    const { isLoggedIn, handleLogout, user } = useAuth();
+    const { handleLogout, user } = useAuth();
 
     const logout = () => {
         handleLogout();
@@ -35,7 +35,7 @@ export default function(){
                         </li>
                     ))}
                 </ul>
-                {!isLoggedIn &&
+                {!user &&
                     <ul className="flex items-center gap-x-5">
                         <li>
                             <NavLink to={"/login"}>Login</NavLink>
@@ -45,7 +45,7 @@ export default function(){
                         </li>
                     </ul>
                 }
-                {isLoggedIn && 
+                {user && 
                     <div>
                         <details>
                             <summary>                        
