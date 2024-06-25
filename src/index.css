@@ -1,0 +1,23 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+
+.published{
+    @apply text-green-600 px-3 py-2 bg-lime-200 rounded-md 
+}
+
+.notPublishedYet{
+    @apply text-red-600 px-3 py-2 bg-rose-300 rounded-md 
+}
+
+textarea, input, select{
+    @apply rounded-sm py-2 px-4 focus:ring-2 focus:outline-none
+}
+.invalidText{
+    @apply bg-rose-100 ring-red-500 ring-2
+}
+.normalInputState{
+    @apply ring-cyan-500
+}
