@@ -27,7 +27,7 @@ export default function({title, slug, content, image, published, tags, category}
                             ))}
                         </div>
                         
-                        {category !== null && <span className='bg-slate-300 p-3'>{category}</span>}
+                        {category && <span className='bg-slate-300 p-3'>{category}</span>}
                     </div>
 
                 </div>

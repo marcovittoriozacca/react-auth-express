@@ -1,7 +1,11 @@
 import { handleFallbackImage, getPostImage } from '../../../utils.js';
+import { useAuth } from '../../contexts/AuthContext.jsx';
+import { MdDelete as DeleteIcon } from "react-icons/md";
+import { useGlobal } from '../../contexts/GlobalContext.jsx';
 
 export default function({title, slug, content, image, published, tags, category}){
-    const baseUrl = import.meta.env.VITE_SERVER_BASE_URL;
+    const { user } = useAuth();
+    const { handlePostDelete } = useGlobal();
 
     return(
         <div className='container mx-auto'>
@@ -21,7 +25,7 @@ export default function({title, slug, content, image, published, tags, category}
             <div>
                 {category?.name}
             </div>
-
+            {user && <DeleteIcon onClick={() => handlePostDelete(slug)}/>}
         </div>
     )
 }
