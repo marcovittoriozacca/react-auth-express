@@ -11,6 +11,8 @@ import { GlobalProvider } from "./contexts/GlobalContext"
 import CheckAuth from "./middlewares/CheckAuth"
 import Login from "./pages/Login"
 import Edit from "./pages/Edit"
+import PaginaSuperSegretaSoloPerGliAdmin from "./pages/PaginaSuperSegretaSoloPerGliAdmin"
+import CheckAdmin from "./middlewares/CheckAdmin"
 
 function App() {
 
@@ -26,6 +28,12 @@ function App() {
               {/* main route for the "/" url with component HomePage */}
               <Route index element={<HomePage/>}/>
                 <Route path="login" element={<Login/>}/>
+
+                <Route path="secret-page" element={
+                  <CheckAdmin>
+                    <PaginaSuperSegretaSoloPerGliAdmin/>
+                  </CheckAdmin>
+                  }/>
 
                 <Route path={"create-post"} element={
                   <CheckAuth>

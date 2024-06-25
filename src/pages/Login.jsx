@@ -25,9 +25,10 @@ export default function(){
         try{
             const response = await axios.post(`${loginUrl}`, formData);
             const token = response.data.token;
-            const username = response.data.user.name;
+            const {name, id } = response.data.user;
+            
 
-            handleLogin({"token": token, "name": username});
+            handleLogin({"token": token, "name": name, "id": id});
             return navigate("/posts");
 
         }catch(err){

@@ -39,6 +39,7 @@ export default function(){
                 published={post.published? true : false}
                 tags={post.tags}
                 category={post.category?.name}
+                postFound={foundStatus}
             />
         }
         
